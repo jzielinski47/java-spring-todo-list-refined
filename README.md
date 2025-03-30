@@ -1,19 +1,63 @@
 # Java Spring Boot ToDo List
-I created a simple Java Spring Boot todo list studying the framework logic with Controllers, Services, etc. I enhanced it by data validation, custom DTOs, and getting started with RESTful API in Java. 
+I created a simple Java Spring Boot todo list server studying the framework logic with Controllers, Services, etc. I enhanced it by data validation, custom DTOs, and getting started with RESTful API in Java. 
 
-## Endpoints
-GET 
-```
-/
-```
+## Server Endpoints
 
-GET 
-```
-/completed
+#### Display all tasks
+```http
+GET /api/v1/tasks
 ```
 
-GET 
+#### Display all completed tasks
+```http
+GET /api/v1/tasks/completed
 ```
-/incompleted
+
+#### Display all incompleted tasks
+```http
+GET /api/v1/tasks/incompleted
 ```
-POST
+
+#### Creates a new task
+```http
+POST /api/v1/tasks
+```
+Creates a new task
+| Parameter	 | Type | Description |
+| -----------| ----| -------- |
+| name |	String	| @NotBlank Name cannot be empty |
+| priority |	int |	Optional. @Min 0, @Max 5, default: 0 |
+| completed	|boolean	| Optional. default: false |
+
+#### Update a single task
+```http
+PATCH /api/v1/tasks/{id}
+```
+Patches a task with a single field update
+| Parameter	 | Type | Description |
+| -----------| ----| -------- |
+| id |	Long	| Required. @PathVariable |
+| name |	String	| Optional. |
+| priority |	int |	Optional. @Min 0, @Max 5, default: 0 |
+| completed	|boolean	| Optional. default: false |
+
+#### Update an entire task
+```http
+PUT /api/v1/tasks/{id}
+```
+Replaces single task with different task
+| Parameter	 | Type | Description |
+| -----------| ----| -------- |
+| id |	Long	| Required. @PathVariable |
+| name |	String	| @NotBlank Name cannot be empty |
+| priority |	int |	Optional. @Min 0, @Max 5, default: 0 |
+| completed	|boolean	| Optional. default: false |
+
+#### Delete a task
+```http
+DELETE /api/v1/tasks/{id}
+```
+Replaces single task with different task
+| Parameter	 | Type | Description |
+| -----------| ----| -------- |
+| id |	Long	| Required. @PathVariable |
