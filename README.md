@@ -18,11 +18,23 @@ GET /api/v1/tasks/completed
 GET /api/v1/tasks/incompleted
 ```
 
+#### Display tasks by priority
+```http
+GET /api/v1/tasks/{priority}
+```
+Displays all the tasks with given priority.
+
+| Parameter	 | Type | Description |
+| -----------| ----| -------- |
+| priority |	int |	@Min 0, @Max 5 |
+
+
 #### Creates a new task
 ```http
 POST /api/v1/tasks
 ```
 Creates a new task
+
 | Parameter	 | Type | Description |
 | -----------| ----| -------- |
 | name |	String	| @NotBlank Name cannot be empty |
@@ -34,6 +46,7 @@ Creates a new task
 PATCH /api/v1/tasks/{id}
 ```
 Patches a task with a single field update
+
 | Parameter	 | Type | Description |
 | -----------| ----| -------- |
 | id |	Long	| Required. @PathVariable |
@@ -46,6 +59,7 @@ Patches a task with a single field update
 PUT /api/v1/tasks/{id}
 ```
 Replaces single task with different task
+
 | Parameter	 | Type | Description |
 | -----------| ----| -------- |
 | id |	Long	| Required. @PathVariable |
@@ -58,6 +72,7 @@ Replaces single task with different task
 DELETE /api/v1/tasks/{id}
 ```
 Replaces single task with different task
+
 | Parameter	 | Type | Description |
 | -----------| ----| -------- |
 | id |	Long	| Required. @PathVariable |
