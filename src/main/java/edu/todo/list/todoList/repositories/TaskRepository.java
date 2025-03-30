@@ -11,6 +11,7 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     public Task findByName(String name);
     public List<Task> findByCompletedTrue();
     public List<Task> findByCompletedFalse();
+    public List<Task> findByPriority(int priority);
     public List<Task> findAll();
     public Task getById(Long id);
 }

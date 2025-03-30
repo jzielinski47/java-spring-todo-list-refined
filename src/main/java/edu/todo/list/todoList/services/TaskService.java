@@ -40,4 +40,8 @@ public class TaskService {
     public Task updateTask(Task task) {
         return taskRepository.save(task);
     }
+
+    public List<Task> getPriorityTasks(int priority) {
+        return taskRepository.findByPriority(priority);
+    }
 }

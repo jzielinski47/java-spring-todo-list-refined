@@ -33,6 +33,11 @@ public class TaskController {
         return ResponseEntity.ok(taskService.getAllIncompleteTasks());
     }
 
+    @GetMapping("/{priority}")
+    public ResponseEntity<List<Task>> getPriorityTasks(@PathVariable int priority) {
+        return ResponseEntity.ok(taskService.getPriorityTasks(priority));
+    }
+
     @PostMapping
     public ResponseEntity<Task> createTask(@Valid @RequestBody TaskRequest req) {
         Task task = new Task(req.getName(), req.getPriority(), req.isCompleted());
