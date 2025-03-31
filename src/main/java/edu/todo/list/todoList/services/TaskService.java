@@ -44,4 +44,8 @@ public class TaskService {
     public List<Task> getPriorityTasks(int priority) {
         return taskRepository.findByPriority(priority);
     }
+
+    public List<Task> getPriorityTasksRange(int min, int max) {
+        return taskRepository.findByPriorityRange(min, max);
+    }
 }

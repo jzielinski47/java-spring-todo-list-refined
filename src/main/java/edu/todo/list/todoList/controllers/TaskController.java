@@ -34,8 +34,23 @@ public class TaskController {
     }
 
     @GetMapping("/{priority}")
-    public ResponseEntity<List<Task>> getPriorityTasks(@PathVariable int priority) {
+    public ResponseEntity<List<Task>> getPriorityTasks(@Valid @PathVariable int priority) {
         return ResponseEntity.ok(taskService.getPriorityTasks(priority));
+    }
+
+    @GetMapping("/priority")
+    public ResponseEntity<List<Task>> getPriorityTasks(@Valid @RequestParam(defaultValue = "0") int min, @Valid @RequestParam(defaultValue = "0") int max) {
+
+        if(min != 0 && max != 0 && min > max)
+            throw new IllegalArgumentException("min > max");
+        if(min != 0 && max != 0)
+            return ResponseEntity.ok(taskService.getPriorityTasksRange(min, max));
+        if(min != 0)
+            return ResponseEntity.ok(taskService.getPriorityTasksRange(min, 5));
+        if(max != 0)
+            return ResponseEntity.ok(taskService.getPriorityTasksRange(0, max));
+
+        return ResponseEntity.ok(taskService.getAllTasks());
     }
 
     @PostMapping

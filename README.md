@@ -28,6 +28,16 @@ Displays all the tasks with given priority.
 | -----------| ----| -------- |
 | priority |	int |	@Min 0, @Max 5 |
 
+#### Display tasks by priority range
+```http
+GET /api/v1/tasks/priority
+```
+Displays all the tasks with given priority range
+
+| Parameter	 | Type | Description                             |
+|----------| ----|-----------------------------------------|
+| min |	int | 	@RequestParam Optional. @Min 0, @Max 5 |
+| max |	int | 	@RequestParam Optional. @Min 0, @Max 5 |
 
 #### Creates a new task
 ```http
